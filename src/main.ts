@@ -6,7 +6,7 @@ async function run() {
     const version = core.getInput('version');
     const pkg = version ? `pipenv==${version}` : 'pipenv';
     const sudo = process.platform !== 'win32' ? 'sudo ' : '';
-    await exec(`${sudo}pip install ${pkg}`)
+    await exec(`${sudo}pip install ${pkg} --break-system-packages`)
   } catch (error) {
     core.setFailed(error.message);
   }
